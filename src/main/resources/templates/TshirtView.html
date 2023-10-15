@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tshirt Store</title>
+  </head>
+  <body>
+    <h1>TShirt View</h1>
+    <div class="Tshirt">
+      <h1 th:text="${product.name}"></h1>
+      <p th:text="${product.description}"></p>
+      <p th:text="${product.price}"></p>
+
+      <div th:each="image : ${product.images}">
+        <h1 th:text="${image.image_url}"></h1>
+        <img th:src="'/images/' + ${image.image_url}" width="200" height="200" />
+    </div>    
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories | T-Shirt Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <h1 style="text-align: center;">Categories</h1>
+    <a href="AddCategory" class="fa fa-pencil-square-o link"></a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Operate</th>
+        </tr>
+        <tr th:each="C :${AllCategories}">
+            <td th:text="${C.category_id}"></td>
+            <td th:text="${C.name}"></td>
+            <td th:text="${C.description}"></td>
+            <td><a th:href="'/DeleteCategory?category_id=' + ${C.category_id}" class="fa fa-remove"></a> <a
+                    th:href="'/ModifyCategory?category_id=' + ${C.category_id}" class="fa fa-pencil-square"></a>
+            </td>
+        </tr>
+    </table>
+</body>
+
+<style>
+    .link {
+        float: right;
+        margin-top: -8vh;
+        color: orange;
+        text-decoration: none;
+    }
+
+    a {
+        color: orange;
+    }
+
+    table,
+    td,
+    th {
+        border: 2px solid black;
+        padding: 5px;
+        margin: auto;
+        width: 90vw;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    :root {
+        --white-Color: white;
+        --black-Color: black;
+        --white-red: #f5f5f5;
+        --full-width: 99vw;
+    }
+
+    @font-face {
+        font-family: "Jet";
+        src: url("/fonts/JetMono.ttf");
+    }
+
+    @font-face {
+        font-family: "mom";
+        src: url("/fonts/momR.ttf");
+    }
+
+    body {
+        font-size: 2.5vw;
+        font-family: "Jet";
+        background-color: var(--white-red);
+    }
+</style>
+
+</html>

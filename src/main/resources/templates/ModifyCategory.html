@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modify Prduct | Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/AdminPanel.css}" type="text/css" />
+</head>
+
+<body>
+    <h1 style="text-align: center; margin: 0;">Modify Category</h1>
+
+    <a href="AddCategory" class="fa fa-adjust"></a>
+
+    <form class="form" th:action="@{/AddCategory}" method="post">
+        <label for="Category">Category Name</label><br />
+        <input type="text" placeholder="Enter Category Name" name="name" th:value="${category_data.name}"
+            required /><br />
+        <label for="Description">Description</label><br />
+        <input type="text" placeholder="Enter Category Description" name="description"
+            th:value="${category_data.description}" required /><br />
+        <button type="reset">Clear</button>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+<style>
+    a {
+        float: right;
+        margin-right: 5rem;
+        color: orange;
+        font-size: 2rem;
+        margin-top: -7vw;
+        text-decoration: none;
+    }
+</style>
+
+</html>

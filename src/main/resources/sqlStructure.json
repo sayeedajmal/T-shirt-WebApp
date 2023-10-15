@@ -1,0 +1,72 @@
+{
+  "tables": {
+    "Users": {
+      "user_id": "Primary Key",
+      "username": "String",
+      "email": "String",
+      "password_hash": "String",
+      "first_name": "String",
+      "last_name": "String",
+      "address": "String",
+      "phone_number": "String",
+      "registration_date": "Date"
+    },
+    "Categories": {
+      "category_id": "Primary Key",
+      "name": "String",
+      "description": "String"
+    },
+    "Products": {
+      "product_id": "Primary Key",
+      "name": "String",
+      "description": "String",
+      "price": "Decimal",
+      "stock_quantity": "Integer",
+      "category_id": "Foreign Key (Categories)"
+    },
+    "Images": {
+      "image_id": "Primary Key",
+      "product_id": "Foreign Key (Products)",
+      "image_url": "String"
+    },
+    "Orders": {
+      "order_id": "Primary Key",
+      "user_id": "Foreign Key (Users)",
+      "order_date": "Date",
+      "total_amount": "Decimal"
+    },
+    "OrderItems": {
+      "order_item_id": "Primary Key",
+      "order_id": "Foreign Key (Orders)",
+      "product_id": "Foreign Key (Products)",
+      "quantity": "Integer",
+      "unit_price": "Decimal"
+    },
+    "ShippingAddresses": {
+      "shipping_address_id": "Primary Key",
+      "order_id": "Foreign Key (Orders)",
+      "recipient_name": "String",
+      "street_address": "String",
+      "city": "String",
+      "state": "String",
+      "postal_code": "String",
+      "country": "String"
+    },
+    "PaymentTransactions": {
+      "transaction_id": "Primary Key",
+      "order_id": "Foreign Key (Orders)",
+      "payment_date": "Date",
+      "payment_method": "String",
+      "payment_status": "String"
+    },
+    "Returns": {
+      "return_id": "Primary Key",
+      "order_id": "Foreign Key (Orders)",
+      "return_date": "Date",
+      "reason": "String",
+      "status": "String",
+      "refund_amount": "String (Optional / if applcable)",
+      "comments": "String (Additional Notes)"
+    }
+  }
+}

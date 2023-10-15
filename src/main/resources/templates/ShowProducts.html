@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proudcts | T-Shirt Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <h1 style="text-align: center;">Products</h1>
+    <a href="AddProduct" class="fa fa-pencil-square-o link"></a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category ID</th>
+            <th>Operate</th>
+        </tr>
+        <tr th:each="p :${AllProducts}">
+            <td th:text="${p.product_id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.description}"></td>
+            <td th:text="${p.price}"></td>
+            <td th:text="${p.stock_quentity}"></td>
+            <td th:text="${p.categories.category_id}"></td>
+            <td><a href="#" class="fa fa-remove"></a> <a href="AddProduct" class="fa fa-pencil-square"></a></td>
+        </tr>
+    </table>
+</body>
+
+<style>
+    .link {
+        float: right;
+        margin-top: -8vh;
+        color: orange;
+        text-decoration: none;
+    }
+
+    a {
+        color: orange;
+    }
+
+    table,
+    td,
+    th {
+        border: 2px solid black;
+        padding: 5px;
+        margin: 0;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    :root {
+        --white-Color: white;
+        --black-Color: black;
+        --white-red: #f5f5f5;
+        --full-width: 99vw;
+    }
+
+    @font-face {
+        font-family: "Jet";
+        src: url("/fonts/JetMono.ttf");
+    }
+
+    @font-face {
+        font-family: "mom";
+        src: url("/fonts/momR.ttf");
+    }
+
+    body {
+        font-size: 2.5vw;
+        font-family: "Jet";
+        background-color: var(--white-red);
+    }
+</style>
+
+</html>
