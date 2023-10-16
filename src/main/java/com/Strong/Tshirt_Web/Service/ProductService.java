@@ -22,6 +22,15 @@ public class ProductService {
         return productRepo.findProductWithImages(productId);
     }
 
+    public Categories getCategoryIdByProductId(int product_id) {
+        Products product = productRepo.findById(product_id).orElse(null);
+        return product.getCategories();
+    }
+
+    public Products getProductById(int product_id) {
+        return productRepo.findById(product_id).orElse(null);
+    }
+
     public List<Products> getAllProducts() {
         return productRepo.findAll();
     }
@@ -37,5 +46,9 @@ public class ProductService {
 
     public void SaveProduct(Products product) {
         productRepo.save(product);
+    }
+
+    public void DeleteProductById(int product_id) {
+        productRepo.deleteById(product_id);
     }
 }

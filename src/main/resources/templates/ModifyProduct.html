@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modify Product | Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/AdminPanel.css}" type="text/css" />
+</head>
+
+<body>
+
+    <a th:href="AdminPanel" class="home fa fa-home"></a>
+    <h2 style="text-align: center; margin: 0;">Modify Product</h2>
+
+    <form class="form" th:action="@{/UpdateProduct}" method="post">
+        <input type="hidden" name="product_id" readonly th:value="${Product.product_id}" required /><br />
+        <label for="product">Category Id</label><br />
+        <input type="text" name="category_id" readonly th:value="${Product.categories.category_id}" required /><br />
+
+        <label for="product">Prduct Name</label><br />
+        <input type="text" placeholder="Enter Product Name" name="name" th:value="${Product.name}" required /><br />
+
+        <label for="Description">Description</label><br />
+        <input type="text" placeholder="Enter Product Description" name="description" th:value="${Product.description}"
+            required /><br />
+
+        <label for="price">Product Price</label><br />
+        <input type="number" placeholder="Enter Product Price" name="price" th:value="${Product.price}"
+            required /><br />
+
+        <label for="quantity">Stock quantity</label><br />
+        <input type="number" placeholder="Enter Quantity" name="stock_quentity" th:value="${Product.stock_quentity}"
+            required /><br />
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

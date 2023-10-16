@@ -23,11 +23,12 @@ body {
 }
 
 .nav_bar {
-    position: sticky;
     background-color: var(--white-Color);
     width: var(--full-width);
     height: 6vh;
+    top: 5px;
     display: flex;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
 }
@@ -132,7 +133,7 @@ body {
 
 .Tshirts {
     background-color: var(--white-Color);
-    width: var(--full-width);   
+    width: var(--full-width);
     height: 50vh;
     border: 2px solid var(--white-red);
     border-radius: 20px;

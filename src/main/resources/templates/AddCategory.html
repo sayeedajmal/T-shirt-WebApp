@@ -10,10 +10,8 @@
 </head>
 
 <body>
-    <h1 style="text-align: center; margin: 0;">Add Category</h1>
-
-    <a href="ShowCategories" class="fa fa-adjust"></a>
-
+    <a th:href="AdminPanel" class="home fa fa-home"></a>
+    <h2 style="text-align: center; margin: 0;">Add Category</h2>
     <form class="form" th:action="@{/AddCategory}" method="post">
         <label for="Category">Category Name</label><br />
         <input type="text" placeholder="Enter Category Name" name="name" required /><br />
@@ -24,15 +22,5 @@
     </form>
 </body>
 
-<style>
-    a {
-        float: right;
-        margin-right: 5rem;
-        color: orange;
-        font-size: 2rem;
-        margin-top: -7vw;
-        text-decoration: none;
-    }
-</style>
 
 </html>

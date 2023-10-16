@@ -34,6 +34,20 @@ public class CategoryController {
         return "redirect:/ShowCategories";
     }
 
+    @PostMapping("/UpdateCategory")
+    public String UpdateProduct(Categories updatedCategory,
+            @RequestParam("category_id") int categoryId) {
+        Categories existingCategory = categoryService.getCategoryById(categoryId);
+        if (existingCategory != null) {
+            existingCategory.setName(updatedCategory.getName());
+            existingCategory.setDescription(updatedCategory.getDescription());
+            categoryService.SaveCategory(existingCategory);
+        }
+
+        return "redirect:/ShowCategories";
+    }
+
+    // Retrive Data From Category by Pickuped The Category Id
     @GetMapping("/ModifyCategory")
     public ModelAndView ModifyCategory(@RequestParam("category_id") int category_id) {
         Categories categoryData = categoryService.getCategoryById(category_id);
