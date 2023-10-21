@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Strong.Tshirt_Web.Entity.Categories;
+import com.Strong.Tshirt_Web.Entity.Images;
 import com.Strong.Tshirt_Web.Entity.Products;
+import com.Strong.Tshirt_Web.Repository.ProductWithImage;
 import com.Strong.Tshirt_Web.Service.ProductService;
 
 @Controller
@@ -20,7 +22,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/TshirtView/{productId}")
+    @GetMapping("/Tshirt-Show/{productId}")
     public ModelAndView getProductWithImages(@PathVariable Integer productId) {
         Products product = productService.getProductWithImages(productId);
         if (product != null) {
@@ -90,4 +92,29 @@ public class ProductController {
         List<Categories> categories = productService.getAllCategories();
         return new ModelAndView("AddProduct", "categories", categories);
     }
+
+    @GetMapping("/")
+    public ModelAndView ProductShow() {
+        List<ProductWithImage> productsWithImages = productService.getProductWithImage();
+        for (ProductWithImage productWithImage : productsWithImages) {
+            Images image = productWithImage.getImage();
+            if (image != null) {
+                String imageUrl = image.getImage_url();
+                // Log the value of the imageUrl variable.
+                System.out.println("imageUrl: " + imageUrl);
+                // Set the imageUrl field in the ProductWithImage object.
+                productWithImage.setImage_url(imageUrl);
+            }
+        }
+        return new ModelAndView("index", "Products", productsWithImages);
+    }
+
+    /*
+     * @GetMapping("/")
+     * public ModelAndView ProductShow() {
+     * List<ProductWithImage> product = productService.getProductWithImage();
+     * return new ModelAndView("index", "Products", product);
+     * }
+     */
+
 }

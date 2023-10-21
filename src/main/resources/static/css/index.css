@@ -1,7 +1,7 @@
 :root {
     --white-Color: white;
     --black-Color: black;
-    --white-red: #f5f5f5;
+    --white-red: #dae9dcc5;
     --full-width: 99vw;
 }
 
@@ -26,7 +26,6 @@ body {
     background-color: var(--white-Color);
     width: var(--full-width);
     height: 6vh;
-    top: 5px;
     display: flex;
     position: fixed;
     justify-content: space-between;
@@ -51,10 +50,15 @@ body {
 
 .mainShow>h1 {
     margin: 0;
-    padding: 10vh 0 0 0;
+    padding: 20vh 0 0 0;
     font-size: 15ch;
     margin-right: 5rem;
 }
+
+.mainShow>img {
+   display: none;
+}
+
 
 .mainShow>h2 {
     font-family: "Jet";
@@ -80,15 +84,18 @@ body {
 .Spacialities {
     width: var(--full-width);
     height: 50vh;
+    border-top: 2px solid orange;
     height: inherit;
 }
 
 .Spacialities>h1 {
     font-size: 12ch;
-    margin: 0;
+    margin-top: 2vh;
 }
 
-.Spacialities>span {
+.Spacialities>span,
+.newContainer>span,
+.gallery>span {
     width: 30vw;
     padding: 0;
     margin: 0;
@@ -96,7 +103,8 @@ body {
     border-top: 2px solid orange;
 }
 
-.Spacialities>h2 {
+.Spacialities>h1,
+.OurProducts>h1 {
     font-size: 8ch;
 }
 
@@ -116,7 +124,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 15vw;
+    width: 100px;
 }
 
 .specific>h2 {
@@ -131,24 +139,135 @@ body {
     text-align: center;
 }
 
-.Tshirts {
+.TshirtContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.Tshirts,
+.NewArrivals {
     background-color: var(--white-Color);
-    width: var(--full-width);
-    height: 50vh;
+    width: 300px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin-right: 10px;
+    /* For full Width to the right */
+    flex: 0 0 auto;
     border: 2px solid var(--white-red);
     border-radius: 20px;
+    padding: 5px;
+    margin-bottom: 10px;
 }
 
 .Tshirts>img {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    width: 200px;
+    height: fit-content;
     padding: 1rem 0 1rem 0;
 }
 
-.Tshirts>h1 {
+.Tshirts>h2 {
     text-align: center;
-    font-size: 10ch;
+    font-size: 30px;
     margin: 0;
     color: orange;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.limitedTime {
+    font-size: 30px;
+    color: var(--white-Color);
+    background-blend-mode: darken;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(2, 14, 68, 0.788);
+    /*   background-image: url(/images/logo.png); */
+    background-size: cover;
+}
+
+.NewArrivals {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 90vw !important;
+    padding: 5px !important;
+    text-align: center !important;
+}
+
+.gallery {
+    width: 90vw;
+}
+
+.gallery>img {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.SomeRules {
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.SomeRules>i {
+    font-size: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+.SomeRules>h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.contact {
+    text-align: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.contact>input {
+    width: 90vw;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.contact>textarea {
+    width: 80vw;
+    height: 30vh;
+    font-size: 20px;
+    margin: 10px;
+    color: orange;
+    padding: 10px;
+}
+
+.contact>button {
+    width: 23vw;
+    font-size: 50px;
+    border: none;
+    border-right: 2px solid orange;
+    border-left: 2px solid orange;
+    border-bottom: 2px solid orange;
+    font-family: mom;
+    float: right;
+}
+
+.reachOut {
+    margin-top: 10vh;
+    width: var(--full-width);
+    height: 70vh;
+    background-color: var(--white-Color);
 }

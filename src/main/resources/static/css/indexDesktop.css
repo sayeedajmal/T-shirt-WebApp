@@ -1,0 +1,30 @@
+@media screen and (min-width: 600px) {
+    .mainShow>img {
+        display: block;
+        float: right;
+    }
+
+    .specificContainer {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .newContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .NewArrivals {
+        width: 300px !important;
+        flex: 0 0 auto;
+    }
+
+    .newContainer>span {
+        display: none;
+    }
+}

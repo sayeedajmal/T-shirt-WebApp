@@ -9,6 +9,7 @@ import com.Strong.Tshirt_Web.Entity.Categories;
 import com.Strong.Tshirt_Web.Entity.Products;
 import com.Strong.Tshirt_Web.Repository.CategoryRepo;
 import com.Strong.Tshirt_Web.Repository.ProductRepo;
+import com.Strong.Tshirt_Web.Repository.ProductWithImage;
 
 @Service
 public class ProductService {
@@ -20,6 +21,10 @@ public class ProductService {
 
     public Products getProductWithImages(Integer productId) {
         return productRepo.findProductWithImages(productId);
+    }
+
+    public List<ProductWithImage> getProductWithImage() {
+        return productRepo.findProductsWithImage();
     }
 
     public Categories getCategoryIdByProductId(int product_id) {

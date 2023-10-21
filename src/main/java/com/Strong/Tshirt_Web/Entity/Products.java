@@ -40,6 +40,13 @@ public class Products {
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     public List<Images> images;
 
+    /*
+     * // Here's to Call Single Image of a specific proudct
+     * 
+     * @OneToOne(mappedBy = "product", fetch = FetchType.EAGER)
+     * public Images image;
+     */
+
     public Products() {
 
     }

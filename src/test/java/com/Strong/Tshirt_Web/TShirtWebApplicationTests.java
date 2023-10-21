@@ -1,16 +1,10 @@
 package com.Strong.Tshirt_Web;
 
-import java.util.Optional;
-
-import org.junit.jupiter.api.Test;
-
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.Strong.Tshirt_Web.Entity.Images;
-import com.Strong.Tshirt_Web.Entity.Products;
 import com.Strong.Tshirt_Web.Repository.ImagesRepo;
 import com.Strong.Tshirt_Web.Repository.ProductRepo;
 
@@ -45,15 +39,18 @@ class TShirtWebApplicationTests {
 	 * }
 	 */
 
-	@Test
-	public void ProductImage() {
-		Optional<Products> prouductId = productRepo.findById(152);
-		if (prouductId.isPresent()) {
-			Products product = prouductId.get();
-			Images image = new Images(product, "/images/Vintage-T-Shirts4.jpg");
-			logger.info("Inserted Image: {}", imagesRepo.save(image).toString());
-		} else {
-			logger.error("Product with ID 152 not found.");
-		}
-	}
+	/*
+	 * @Test
+	 * public void ProductImage() {
+	 * Optional<Products> prouductId = productRepo.findById(152);
+	 * if (prouductId.isPresent()) {
+	 * Products product = prouductId.get();
+	 * Images image = new Images(product, "/images/Vintage-T-Shirts4.jpg");
+	 * logger.info("Inserted Image: {}", imagesRepo.save(image).toString());
+	 * } else {
+	 * logger.error("Product with ID 152 not found.");
+	 * }
+	 * }
+	 */
+
 }

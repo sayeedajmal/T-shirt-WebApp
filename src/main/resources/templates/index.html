@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="https://www.thymeleaf.com">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>T-Shirt Store</title>
-    <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css" />
-  </head>
 
-  <body>
-    <div class="nav_bar">
-      <img src="/images/logo.png" />
-      <h2>T-Shirt Store</h2>
-      <img src="/images/logo.png" />
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T-Shirt Store</title>
+  <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{/css/indexDesktop.css}" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" th:href="@{/images/logo.png}" type="image/x-icon">
+</head>
 
-    <div class="mainShow">
-      <h1>T-Shirt Store</h1>
-      <h2>A Single-Product Bootstrap template</h2>
-      <h2>
-        <b>Six</b> Color Varinants and <b>SASS files</b> for an easy
-        customisation
-      </h2>
+<body>
+  <div class="nav_bar">
+    <img src="/images/logo.png" />
+    <h2>T-Shirt Store</h2>
+    <img src="/images/logo.png" />
+  </div>
 
-      <button>Buy Now</button>
-    </div>
+  <div class="mainShow">
+    <h1>T-Shirt Store</h1>
+    <h2>A Single-Product Bootstrap template</h2>
+    <img src="/images/logo.png" alt="Tshirt Logo" width="250px">
+    <h2>
+      <b>6 Color Varinants </b> and <b>SASS files</b> for an easy
+      customisation
+    </h2>
 
-    <div class="Spacialities">
-      <h1>Our Proudcts Spacialities</h1>
-      <span></span>
-      <h2>More Then Just A Look</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aliquid
-        dolore ratione magni fugiat aut sapiente praesentium similique ut
-        exercitationem neque laudantium nesciunt, officiis blanditiis fugit.
-        Modi nulla veniam iste!
-      </p>
+    <button>Buy Now</button>
+  </div>
 
+  <!-- SPECIALITIES -->
+  <div class="Spacialities">
+    <h1>Our Proudcts Spacialities</h1>
+    <span></span>
+    <h1>More Then Just A Look</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, aliquid
+      dolore ratione magni fugiat aut sapiente praesentium similique ut
+      exercitationem neque laudantium nesciunt, officiis blanditiis fugit.
+      Modi nulla veniam iste!
+    </p>
+
+    <div class="specificContainer">
       <div class="specific">
         <img src="/images/logo.png" />
         <h2>Unique Design</h2>
@@ -43,25 +50,99 @@
       </div>
       <div class="specific">
         <img src="/images/logo.png" />
-        <h2>Unique Design</h2>
-        <p>It's Good Looking Unique DesignIt's Good Looking Unique Design</p>
+        <h2>Perfect fit clothes </h2>
+        <p>Suspendisse posuere, diam in bibendum posuere, diam</p>
       </div>
       <div class="specific">
         <img src="/images/logo.png" />
         <h2>Unique Design</h2>
-        <p>It's Good Looking Unique DesignIt's Good Looking Unique Design</p>
+        <p>Suspendisse posuere, diam in bibendum posuere, diam </p>
       </div>
     </div>
+  </div>
 
-    <div class="Tshirts" th:each="U :${Users}">
-      <img src="/images/logo.png" />
-      <h1 style="color: orangered" th:text="${U.username}">Full Tshirt</h1>
-      <h1 th:text="${U.user_id}">399.0 Rupee</h1>
+  <!-- TSHIRT CONTAINER -->
+  <div class="TshirtContainer">
+    <div class="Tshirts" th:each="productWithImage: ${Products}"
+      th:data-url="'/Tshirt-Show/' + ${productWithImage.product.product_id}" onclick="navigateToProduct(this)">
+      <img th:src="'/images/' + ${productWithImage.image_url}" alt="Product Image">
+      <h2 th:text="${productWithImage.product.name}"></h2>
+      <h2 style="font-family: Jet;" th:text="${productWithImage.product.price}"></h2>
     </div>
-    <!-- 
-      <h1>Hey Here's The T-Shirt Store</h1>
-    <a href="Login">Login</a>
-    <a href="Signup">SignUp</a>
-    <a href="AllUsers">All Users</a> -->
-  </body>
+  </div>
+
+  <!-- LIMITED TIME ONLINE -->
+  <div class="limitedTime">
+    <h1>Limited Time Online</h1>
+    <h3>Click & Collect Next Day Delivery </h3>
+    <a href="#">Free Over 20$</a>
+  </div>
+
+  <h1>New Arrivals</h1>
+  <div class="newContainer">
+    <span></span>
+    <div class="NewArrivals">
+      <img src="/images/logo.png" alt="New Arrivals" width="200px">
+      <h1>Elegent Blue</h1>
+      <h2 style="font-family: Jet;">32$</h2>
+    </div>
+
+    <div class="NewArrivals">
+      <img src="/images/logo.png" alt="New Arrivals" width="200px">
+      <h1>Elegent Blue</h1>
+      <h2 style="font-family: Jet;">32$</h2>
+    </div>
+
+
+    <div class="NewArrivals">
+      <img src="/images/logo.png" alt="New Arrivals" width="200px">
+      <h1>Elegent Blue</h1>
+      <h2 style="font-family: Jet;">32$</h2>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <h1>Our Gallery</h1>
+    <span></span>
+    <img src="/images/logo.png" alt="Gallery Image">
+  </div>
+
+  <div class="SomeRules">
+    <i class="fa fa-cart-arrow-down"></i>
+    <h2>Advance Shipping</h2>
+    <h3>Free Shipping Over 300$</h3>
+  </div>
+  <div class="SomeRules">
+    <i class="fa fa-headphones"></i>
+    <h2>Premium Support</h2>
+    <h3>Free Shipping Over 300$</h3>
+  </div>
+  <div class="SomeRules">
+    <i class="fa fa-repeat"></i>
+    <h2>30 Day Return</h2>
+    <h3>Free Shipping Over 300$</h3>
+  </div>
+
+  <form action="" method="post" class="contact">
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio a sapiente at dolor tempora excepturi </h2>
+    <input type="text" placeholder="Enter Your Name" name="yourName" required>
+    <input type="email" placeholder="Enter Your Email" name="yourEmail" required>
+    <textarea title="Help" name="helpQuote" placeholder="How Can I Help You" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+
+  <div class="reachOut">
+    <h1 style="text-align: center; margin: auto;">SOme Thing Designed</h1>
+  </div>
+</body>
+
+
+<script>
+  function navigateToProduct(element) {
+    const productUrl = element.getAttribute('data-url');
+    window.location.href = productUrl;
+  }
+
+</script>
+
 </html>
