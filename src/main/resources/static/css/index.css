@@ -5,6 +5,20 @@
     --full-width: 99vw;
 }
 
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 166, 0, 0.603);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    direction: ltr;
+}
+
+::-webkit-scrollbar-track {
+    background: #00000000;
+}
+
 @font-face {
     font-family: "Jet";
     src: url("/fonts/JetMono.ttf");
@@ -33,7 +47,6 @@ body {
 }
 
 .nav_bar>h2 {
-    margin-left: -8rem;
     font-size: 7ch;
 }
 
@@ -56,7 +69,7 @@ body {
 }
 
 .mainShow>img {
-   display: none;
+    display: none;
 }
 
 
@@ -84,7 +97,6 @@ body {
 .Spacialities {
     width: var(--full-width);
     height: 50vh;
-    border-top: 2px solid orange;
     height: inherit;
 }
 
@@ -149,9 +161,7 @@ body {
 .Tshirts,
 .NewArrivals {
     background-color: var(--white-Color);
-    width: 300px;
-    /* margin-left: auto;
-    margin-right: auto; */
+    width: 280px;
     margin-right: 10px;
     /* For full Width to the right */
     flex: 0 0 auto;
@@ -161,19 +171,21 @@ body {
     margin-bottom: 10px;
 }
 
+
 .Tshirts>img {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 200px;
-    height: fit-content;
-    padding: 1rem 0 1rem 0;
+    overflow: hidden;
+    width: 280px;
+    border-radius: 2%;
+    height: 300px;
 }
 
 .Tshirts>h2 {
     text-align: center;
-    font-size: 30px;
-    margin: 0;
+    font-size: 40px;
+    margin-top: 20px;
     color: orange;
 }
 
@@ -195,17 +207,20 @@ h1 {
 .NewArrivals {
     margin-left: auto !important;
     margin-right: auto !important;
-    width: 90vw !important;
+    width: 80vw !important;
     padding: 5px !important;
     text-align: center !important;
 }
 
 .gallery {
     width: 90vw;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .gallery>img {
-    width: 300px;
+    width: 200px;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -214,6 +229,11 @@ h1 {
 .SomeRules {
     border: 1px solid black;
     margin: 10px;
+    padding: 20px;
+    width: 25vw;
+    height: max-content;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 5px;
     text-align: center;
 }
@@ -249,19 +269,23 @@ h1 {
     width: 80vw;
     height: 30vh;
     font-size: 20px;
-    margin: 10px;
+    display: block;
+    margin-top: 10px;
     color: orange;
+    margin-left: auto;
+    margin-right: auto;
     padding: 10px;
 }
 
 .contact>button {
-    width: 23vw;
+    width: 100px;
     font-size: 50px;
     border: none;
     border-right: 2px solid orange;
     border-left: 2px solid orange;
     border-bottom: 2px solid orange;
     font-family: mom;
+    margin-right: 5vw;
     float: right;
 }
 

@@ -14,7 +14,7 @@
 
       <div th:each="image : ${product.images}">
         <h1 th:text="${image.image_url}"></h1>
-        <img th:src="'/images/' + ${image.image_url}" width="200" height="200" />
+        <img th:src="'/images/' + ${image.image_url}" width="400px" />
     </div>    
       </div>
     </div>

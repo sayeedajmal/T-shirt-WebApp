@@ -109,12 +109,4 @@ public class ProductController {
         return new ModelAndView("index", "Products", productsWithImages);
     }
 
-    /*
-     * @GetMapping("/")
-     * public ModelAndView ProductShow() {
-     * List<ProductWithImage> product = productService.getProductWithImage();
-     * return new ModelAndView("index", "Products", product);
-     * }
-     */
-
 }

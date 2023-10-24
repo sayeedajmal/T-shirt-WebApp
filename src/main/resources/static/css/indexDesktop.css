@@ -4,27 +4,25 @@
         float: right;
     }
 
+    .gallery {
+        width: 90vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    .rules,
+    .newContainer,
     .specificContainer {
         display: flex;
         flex-direction: row;
-
-    }
-
-    .newContainer {
-        display: flex;
-        flex-direction: row;
         flex-wrap: nowrap;
+        gap: 3px;
         overflow-x: auto;
-        flex-wrap: wrap;
-        gap: 1rem;
     }
 
     .NewArrivals {
-        width: 300px !important;
-        flex: 0 0 auto;
-    }
-
-    .newContainer>span {
-        display: none;
+        width: 30vw !important;
     }
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images | TShirt Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/ShowData.css}" type="text/css" />
+
+</head>
+
+<body>
+    <h1 style="text-align: center;">Images</h1>
+    <a href="AddImages" class="fa fa-pencil-square-o link"></a>
+
+    <table>
+        <tr>
+            <th>Product ID</th>
+            <th>Image Url</th>
+            <th>Image</th>
+            <th>Image ID</th>
+            <th>Operate</th>
+        </tr>
+        <tr th:each="I :${AllImages}">
+            <td th:text="${I.product.product_id}"></td>
+            <td th:text="${I.image_url}"></td>
+            <td><img th:src="@{'/images/' + ${I.image_url}}" width="100px"></td>
+            <td th:text="${I.image_id}"></td>
+            <td><a th:href="'/DeleteImage?image_id=' + ${I.image_id} + '&image_url=' + ${I.image_url}"
+                    class="fa fa-remove"></a>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

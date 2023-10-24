@@ -2,7 +2,6 @@ package com.Strong.Tshirt_Web;
 
 import org.slf4j.LoggerFactory;
 
-
 import org.slf4j.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +34,16 @@ public class TShirtWebApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		/* Optional<Products> prouductId = productRepo.findById(152);
-		if (prouductId.isPresent()) {
-			Products product = prouductId.get();
-			Images image = new Images(product, "/images/Vintage-T-Shirts1.jpg");
-			logger.info("Inserted Image: {}", imagesRepo.save(image));
-		} else {
-			logger.error("Product with ID 152 not found.");
-		} */
+		/*
+		 * Optional<Products> prouductId = productRepo.findById(152);
+		 * if (prouductId.isPresent()) {
+		 * Products product = prouductId.get();
+		 * Images image = new Images(product, "/images/Vintage-T-Shirts1.jpg");
+		 * logger.info("Inserted Image: {}", imagesRepo.save(image));
+		 * } else {
+		 * logger.error("Product with ID 152 not found.");
+		 * }
+		 */
 		/*
 		 * logger.info("Inserted: ->{}", usersRepo.InsertUser(new Users("xyz",
 		 * "xtz@gmail.com", "2443243",
