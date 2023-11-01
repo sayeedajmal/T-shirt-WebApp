@@ -5,31 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T-Shirt | Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/AdminPanel.css}" type="text/css" />
 </head>
 
 <body>
-    <h1>T-Shirt Signup</h1>
+    <h2 style="text-align: center;">T-Shirt Signup</h2>
 
-    <div>
-        <form th:action="@{/AddUser}" method="post" style="margin-left: 10rem; padding: 20px;">
-            <label for="fname">First name</label><br>
-            <input type="text" placeholder="First Name" name="fname" required><br>
-            <label for="lname">Last name</label><br>
-            <input type="text" placeholder="Last Name" name="lname" required><br>
-            <label for="username">Username</label><br>
-            <input type="text" placeholder="Username" name="username" required><br>
-            <label for="email">Email Id</label><br>
-            <input type="email" placeholder="Email id" name="email" required><br>
-            <label for="address">Address</label><br>
-            <input type="text" placeholder="Address" name="address" required><br>
-            <label for="phone_number">Phone Number</label><br>
-            <input type="tel" placeholder="Phone Number" name="phone_number" required><br>
-            <label for="password">Password</label><br>
-            <input type="password" placeholder="Password" name="passowrd_hash" required><br>
 
-            <button id="submit">Submit</button>
-        </form>
-    </div>
+    <form class="form" th:action="@{/AddUser}" method="post">
+        <label for="fname">First name</label><br>
+        <input type="text" placeholder="First Name" name="fname" required><br>
+        <label for="lname">Last name</label><br>
+        <input type="text" placeholder="Last Name" name="lname" required><br>
+        <label for="email">Email Id</label><br>
+        <input type="email" placeholder="Email id" name="email" required><br>
+        <label for="address">Address</label><br>
+        <input type="text" placeholder="Address" name="address" required><br>
+        <label for="phone_number">Phone Number</label><br>
+        <input type="tel" placeholder="Phone Number" name="phone_number" required><br>
+        <label for="password">Password</label><br>
+        <input type="password" placeholder="Password" name="passowrd_hash" required><br>
+
+        <button id="submit">Submit</button>
+    </form>
 </body>
 
 </html>

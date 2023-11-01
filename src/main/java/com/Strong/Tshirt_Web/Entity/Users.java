@@ -16,9 +16,6 @@ public class Users {
     private Integer user_id;
 
     @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -43,9 +40,8 @@ public class Users {
 
     }
 
-    public Users(String username, String email, String passowrd_hash, String fname, String lname, String address,
+    public Users(String email, String passowrd_hash, String fname, String lname, String address,
             String phone_number) {
-        this.username = username;
         this.email = email;
         this.passowrd_hash = passowrd_hash;
         this.fname = fname;
@@ -60,14 +56,6 @@ public class Users {
 
     public void setUser_id(Integer user_id) {
         this.user_id = user_id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
@@ -128,7 +116,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users [user_id=" + user_id + ", username=" + username + ", email=" + email + ", passowrd_hash="
+        return "Users [user_id=" + user_id + ", email=" + email + ", passowrd_hash="
                 + passowrd_hash + ", fname=" + fname + ", lname=" + lname + ", address=" + address + ", phone_number="
                 + phone_number + ", Regdate=" + Regdate + "]";
     }

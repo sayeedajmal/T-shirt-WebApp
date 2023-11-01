@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Strong.Tshirt_Web.FileStorageProperties;
 import com.Strong.Tshirt_Web.Entity.Images;
 import com.Strong.Tshirt_Web.Entity.Products;
 import com.Strong.Tshirt_Web.Service.ImagesService;
 import com.Strong.Tshirt_Web.Service.ProductService;
+import com.Strong.Tshirt_Web.Utils.StorageConfig;
 
 @Controller
 public class ImagesController {
@@ -71,7 +71,7 @@ public class ImagesController {
 
         // Passed The file to FireStorageProperties.Upload() to upload in it's directory
         // and return the file name
-        String FileName = FileStorageProperties.UploadImage(file);
+        String FileName = StorageConfig.UploadImage(file);
         if (FileName.contains("Error")) {
             System.out.println("ERROR : Check FileStorageProperties.UploadImage()");
             return "redirect:/error-404";

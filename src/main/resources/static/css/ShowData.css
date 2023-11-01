@@ -19,6 +19,9 @@ th {
     border-collapse: collapse;
     text-align: center;
 }
+td{
+    white-space: normal !important;
+}
 
 :root {
     --white-Color: white;

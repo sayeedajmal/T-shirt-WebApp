@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users | T-Shirt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/ShowData.css}" type="text/css" />
+</head>
+
+<body>
+    <h1 style="text-align: center;">Users</h1>
+    <a href="Signup" class="fa fa-pencil-square-o link"></a>
+    <table>
+        <th>User Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Phone Number</th>
+        <th>Register Date</th>
+        <th>Password</th>
+        <th>email</th>
+        <th>Address</th>
+
+        <tr th:each="U :${Users}">
+            <td th:text="${U.user_id}"></td>
+            <td th:text="${U.fname}"></td>
+            <td th:text="${U.lname}"></td>
+            <td th:text="${U.phone_number}"></td>
+            <td th:text="${U.Regdate}"></td>
+            <td th:text="${U.passowrd_hash}"></td>
+            <td th:text="${U.email}"></td>
+            <td th:text="${U.address}"></td>
+        </tr>
+    </table>
+</body>
+
+</html>
