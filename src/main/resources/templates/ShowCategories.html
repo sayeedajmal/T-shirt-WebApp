@@ -26,8 +26,8 @@
             <td th:text="${C.category_id}"></td>
             <td th:text="${C.name}"></td>
             <td th:text="${C.description}"></td>
-            <td><a th:href="'/DeleteCategory?category_id=' + ${C.category_id}" class="fa fa-remove"></a> <a
-                    th:href="'/ModifyCategory?category_id=' + ${C.category_id}" class="fa fa-pencil-square"></a>
+            <td><a th:href="'/admin/DeleteCategory?category_id=' + ${C.category_id}" class="fa fa-remove"></a> <a
+                    th:href="'/admin/ModifyCategory?category_id=' + ${C.category_id}" class="fa fa-pencil-square"></a>
             </td>
         </tr>
     </table>

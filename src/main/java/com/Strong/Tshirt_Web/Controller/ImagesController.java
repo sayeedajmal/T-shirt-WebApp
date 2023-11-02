@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,7 @@ import com.Strong.Tshirt_Web.Service.ProductService;
 import com.Strong.Tshirt_Web.Utils.StorageConfig;
 
 @Controller
+@RequestMapping("admin")
 public class ImagesController {
 
     @Autowired
@@ -53,7 +55,7 @@ public class ImagesController {
         if (file.delete()) {
             imagesService.DeleteImageById(image_id);
         }
-        return "redirect:/ShowImages";
+        return "redirect:/admin/ShowImages";
     }
 
     /* POST MAPPING */
@@ -79,7 +81,7 @@ public class ImagesController {
             images.setProduct(product);
             images.setImage_url(FileName);
             imagesService.saveImage(images);
-            return "redirect:/ShowImages";
+            return "redirect:/admin/ShowImages";
         }
     }
 

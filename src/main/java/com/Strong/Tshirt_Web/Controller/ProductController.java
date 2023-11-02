@@ -6,31 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Strong.Tshirt_Web.Entity.Categories;
-import com.Strong.Tshirt_Web.Entity.Images;
 import com.Strong.Tshirt_Web.Entity.Products;
-import com.Strong.Tshirt_Web.Repository.ProductWithImage;
 import com.Strong.Tshirt_Web.Service.ProductService;
 
 @Controller
+@RequestMapping("admin")
 public class ProductController {
     @Autowired
     private ProductService productService;
-
-    @GetMapping("/Tshirt-Show/{productId}")
-    public ModelAndView getProductWithImages(@PathVariable Integer productId) {
-        Products product = productService.getProductWithImages(productId);
-        if (product != null) {
-            return new ModelAndView("TshirtView", "product", product);
-        } else {
-            return new ModelAndView("error-404");
-        }
-    }
 
     @PostMapping("/UpdateProduct")
     public String UpdateProduct(@ModelAttribute("product") Products updatedProduct,
@@ -47,7 +36,7 @@ public class ProductController {
             productService.SaveProduct(existingProduct);
         }
 
-        return "redirect:/ShowProducts";
+        return "redirect:/admin/ShowProducts";
     }
 
     // Retrive Data from Pickuped Product ID And Add the Category Id to product by
@@ -83,7 +72,7 @@ public class ProductController {
             product.setCategories(category);
             productService.SaveProduct(product);
         }
-        return "redirect:/ShowProducts";
+        return "redirect:/admin/ShowProducts";
     }
 
     /* Getting All Categories For Adding Product */
@@ -91,22 +80,6 @@ public class ProductController {
     public ModelAndView listCategories() {
         List<Categories> categories = productService.getAllCategories();
         return new ModelAndView("AddProduct", "categories", categories);
-    }
-
-    @GetMapping("/")
-    public ModelAndView ProductShow() {
-        List<ProductWithImage> productsWithImages = productService.getProductWithImage();
-        for (ProductWithImage productWithImage : productsWithImages) {
-            Images image = productWithImage.getImage();
-            if (image != null) {
-                String imageUrl = image.getImage_url();
-                // Log the value of the imageUrl variable.
-                System.out.println("imageUrl: " + imageUrl);
-                // Set the imageUrl field in the ProductWithImage object.
-                productWithImage.setImage_url(imageUrl);
-            }
-        }
-        return new ModelAndView("index", "Products", productsWithImages);
     }
 
 }

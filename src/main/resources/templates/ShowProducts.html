@@ -31,8 +31,8 @@
             <td th:text="${p.price}"></td>
             <td th:text="${p.stock_quentity}"></td>
             <td th:text="${p.categories.category_id}"></td>
-            <td><a th:href="'/DeleteProduct?product_id=' + ${p.product_id}" class="fa fa-remove"></a> <a
-                    th:href="'/ModifyProduct?product_id=' + ${p.product_id}" class="fa fa-pencil-square"></a></td>
+            <td><a th:href="'/admin/DeleteProduct?product_id=' + ${p.product_id}" class="fa fa-remove"></a> <a
+                    th:href="'/admin/ModifyProduct?product_id=' + ${p.product_id}" class="fa fa-pencil-square"></a></td>
         </tr>
     </table>
 </body>

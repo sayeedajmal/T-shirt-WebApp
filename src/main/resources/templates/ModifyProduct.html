@@ -14,7 +14,7 @@
     <a th:href="AdminPanel" class="home fa fa-home"></a>
     <h2 style="text-align: center; margin: 0;">Modify Product</h2>
 
-    <form class="form" th:action="@{/UpdateProduct}" method="post">
+    <form class="form" th:action="@{/admin/UpdateProduct}" method="post">
         <input type="hidden" name="product_id" readonly th:value="${Product.product_id}" required /><br />
         <label for="product">Category Id</label><br />
         <input type="text" name="category_id" readonly th:value="${Product.categories.category_id}" required /><br />

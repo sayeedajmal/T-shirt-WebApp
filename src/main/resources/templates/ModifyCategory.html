@@ -13,7 +13,7 @@
     <a th:href="AdminPanel" class="home fa fa-home"></a>
     <h2 style="text-align: center; margin: 0;">Modify Category</h2>
 
-    <form class="form" th:action="@{/UpdateCategory}" method="post">
+    <form class="form" th:action="@{/admin/UpdateCategory}" method="post">
         <input type="hidden" readonly name="category_id" th:value="${category_data.category_id}" required /><br />
         <label for="Category">Category Name</label><br />
         <input type="text" placeholder="Enter Category Name" name="name" th:value="${category_data.name}"
