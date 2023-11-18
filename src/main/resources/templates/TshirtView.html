@@ -1,22 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tshirt Store</title>
-  </head>
-  <body>
-    <h1>TShirt View</h1>
-    <div class="Tshirt">
-      <h1 th:text="${product.name}"></h1>
-      <p th:text="${product.description}"></p>
-      <p th:text="${product.price}"></p>
 
-      <div th:each="image : ${product.images}">
-        <h1 th:text="${image.image_url}"></h1>
-        <img th:src="'/images/' + ${image.image_url}" width="400px" />
-    </div>    
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tshirt Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" th:href="@{/css/TshirtView.css}" type="text/css" />
+
+</head>
+
+<body>
+  <div class="Tshirt">
+    <div class="overview">
+      <form th:action="@{/DoOrder}" method="post">
+        <input type="hidden" name="product_id" th:value="${product.product_id}">
+        <h2 th:text="${product.name}"></h2>
+        <p th:text="${product.description}"></p>
+        <p th:text="${product.price}"></p>
+        <input type="number" name="quantity" placeholder="Quantity" style="font-size: 20px; width: 100px;" required><br>
+        <button type="submit">Add To Cart</button>
+      </form>
+
     </div>
-  </body>
+
+    <button class="prev-button" onclick="showPreviousImage()">
+      < </button>
+        <button class="next-button" onclick="showNextImage()"> > </button>
+
+        <div class="slider">
+          <div class="image-container" th:each="imageUrl : ${imageUrls}">
+            <img th:src="${imageUrl}" width="500px" />
+          </div>
+        </div>
+  </div>
+
+  <script th:inline="javascript">
+    var images = /*[[${imageUrls}]]*/[];
+    let currentImageIndex = 0;
+    const imageContainers = document.querySelectorAll('.image-container');
+
+    function showPreviousImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      updateDisplayedImage();
+    }
+
+    function showNextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      updateDisplayedImage();
+    }
+
+    function updateDisplayedImage() {
+      for (let i = 0; i < imageContainers.length; i++) {
+        if (i === currentImageIndex) {
+          imageContainers[i].classList.remove("hidden");
+        } else {
+          imageContainers[i].classList.add("hidden");
+        }
+      }
+    }
+
+    // Initialize the displayed image
+    updateDisplayedImage();
+  </script>
+</body>
+
 </html>

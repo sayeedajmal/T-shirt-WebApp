@@ -6,16 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("admin")
-public class AdminController {
+public class OrdersController {
 
-    @GetMapping("/AdminPanel")
-    public String goAdmin() {
-        return "AdminPanel";
+    @GetMapping("/orders")
+    public String ShowOrders() {
+
+        return "orders";
     }
-
-    @GetMapping("/PaymentTransactions")
-    public String PaymentTransactions() {
-        return "PaymentTransactions";
-    }
-
 }

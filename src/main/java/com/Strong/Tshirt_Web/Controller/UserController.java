@@ -8,7 +8,6 @@ import com.Strong.Tshirt_Web.Entity.Users;
 import com.Strong.Tshirt_Web.Service.UerService;;
 
 @Controller
-@RequestMapping("admin")
 public class UserController {
 
     @Autowired
@@ -16,7 +15,12 @@ public class UserController {
 
     @GetMapping("/login")
     public String Login() {
-        return "login";
+        return "Login";
+    }
+
+    @GetMapping("/UserLogin")
+    public String UserLogin() {
+        return "UserLogin";
     }
 
     @GetMapping("/Signup")

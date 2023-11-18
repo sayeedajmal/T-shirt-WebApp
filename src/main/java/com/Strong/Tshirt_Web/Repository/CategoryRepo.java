@@ -16,7 +16,7 @@ import jakarta.transaction.Transactional;
 @RepositoryRestResource(path = "Categories")
 public interface CategoryRepo extends JpaRepository<Categories, Integer> {
 
-    List<Categories> findByName(String name);
+    Categories findByName(String name);
 
     @Query(name = "show_Categories", nativeQuery = true)
     List<Categories> showAll();

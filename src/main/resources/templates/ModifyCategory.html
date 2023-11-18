@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modify Category | Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" th:href="@{/css/AdminPanel.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/Panel.css}" type="text/css" />
 </head>
 
 <body>
-    <a th:href="AdminPanel" class="home fa fa-home"></a>
+    <a th:href="Panel" class="home fa fa-home"></a>
     <h2 style="text-align: center; margin: 0;">Modify Category</h2>
 
-    <form class="form" th:action="@{/admin/UpdateCategory}" method="post">
+    <form class="form" th:action="@{/manage/UpdateCategory}" method="post">
         <input type="hidden" readonly name="category_id" th:value="${category_data.category_id}" required /><br />
         <label for="Category">Category Name</label><br />
         <input type="text" placeholder="Enter Category Name" name="name" th:value="${category_data.name}"

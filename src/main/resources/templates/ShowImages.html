@@ -27,7 +27,7 @@
             <td th:text="${I.image_url}"></td>
             <td><img th:src="@{'/images/' + ${I.image_url}}" width="100px"></td>
             <td th:text="${I.image_id}"></td>
-            <td><a th:href="'/admin/DeleteImage?image_id=' + ${I.image_id} + '&image_url=' + ${I.image_url}"
+            <td><a th:href="'/manage/DeleteImage?image_id=' + ${I.image_id} + '&image_url=' + ${I.image_url}"
                     class="fa fa-remove"></a>
             </td>
         </tr>

@@ -68,7 +68,7 @@ body {
 }
 
 .form>button {
-    border: 2px solid orange;
+    border: 2px solid green;
     border-radius: 10px;
     background-color: orange;
     color: var(--white-Color);

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.Strong.Tshirt_Web.Entity.Categories;
 import com.Strong.Tshirt_Web.Repository.CategoryRepo;
+import com.Strong.Tshirt_Web.Utils.TShirtException;
 
 @Service
 public class CategoryService {
@@ -14,12 +15,21 @@ public class CategoryService {
     @Autowired
     CategoryRepo categoryRepo;
 
-    public void SaveCategory(Categories category) {
-        categoryRepo.save(category);
+    public Categories SaveCategory(Categories category) {
+        Categories findByName = findByName(category.getName());
+        if (findByName == null) {
+            return categoryRepo.save(category);
+        } else
+            throw new TShirtException("Category Name Already Defined:- " + category.getName(), new Throwable());
     }
 
     public Categories getCategoryById(int category_id) {
         return categoryRepo.findById(category_id).orElse(null);
+    }
+
+    Categories findByName(String name) {
+        Categories byName = categoryRepo.findByName(name);
+        return byName;
     }
 
     public List<Categories> getAllCategories() {

@@ -4,22 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add Prduct | Admin</title>
+  <title>Add Product | Admin</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" th:href="@{/css/AdminPanel.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{/css/Panel.css}" type="text/css" />
 </head>
 
 <body>
-  <a th:href="AdminPanel" class="home fa fa-home"></a>
   <h2 style="text-align: center; margin: 0;">Add Product</h2>
-  <form class="form" th:action="@{/admin/AddProduct}" method="post">
+  <form class="form" th:action="@{/manage/AddProduct}" method="post">
     <label for="Category">Category ID</label><br />
 
     <select name="category_id" required>
       <option value="">Select a category</option>
       <option th:each="category: ${categories}" th:value="${category.category_id}" th:text="${category.name}"></option>
     </select><br>
-    <label for="product">Prduct Name</label><br />
+    <label for="product">Product Name</label><br />
     <input type="text" placeholder="Enter Product Name" name="name" required /><br />
     <label for="Description">Description</label><br />
     <input type="text" placeholder="Enter Product Description" name="description" required /><br />

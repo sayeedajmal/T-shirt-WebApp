@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Strong.Tshirt_Web.Entity.Categories;
 import com.Strong.Tshirt_Web.Service.CategoryService;
 
+@RequestMapping("manage")
 @Controller
-@RequestMapping("admin")
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
@@ -27,13 +27,13 @@ public class CategoryController {
     @PostMapping("/AddCategory")
     public String AddCategory(@ModelAttribute Categories category) {
         categoryService.SaveCategory(category);
-        return "redirect:/admin/ShowCategories";
+        return "redirect:/manage/ShowCategories";
     }
 
     @GetMapping("/DeleteCategory")
     public String DeleteByIdCategory(@RequestParam("category_id") int categoryId) {
         categoryService.DeleteById(categoryId);
-        return "redirect:/admin/ShowCategories";
+        return "redirect:/manage/ShowCategories";
     }
 
     @PostMapping("/UpdateCategory")
@@ -46,7 +46,7 @@ public class CategoryController {
             categoryService.SaveCategory(existingCategory);
         }
 
-        return "redirect:/admin/ShowCategories";
+        return "redirect:/manage/ShowCategories";
     }
 
     // Retrive Data From Category by Pickuped The Category Id

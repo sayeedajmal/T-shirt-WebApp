@@ -6,20 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Image | TShirt Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" th:href="@{/css/AdminPanel.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/Panel.css}" type="text/css" />
 
 </head>
 
 <body>
-    <a th:href="AdminPanel" class="home fa fa-home"></a>
     <h2 style="text-align: center; margin: 0;">Add Images</h2>
 
-    <form class="form" th:action="@{/admin/AddImage}" method="post" enctype="multipart/form-data">
+    <form class="form" th:action="@{/manage/AddImage}" method="post" enctype="multipart/form-data">
         <label for="ProductId">Product Id</label><br>
 
         <select name="product_id" required>
             <option value="">Select a Product</option>
-            <!-- the th:value="${product.product_id}" is going to placed to top select tag and added to name attribute -->
             <option th:each="product: ${allProducts}" th:value="${product.product_id}" th:text="${product.name}">
             </option>
         </select><br>

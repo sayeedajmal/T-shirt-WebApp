@@ -16,7 +16,7 @@ import com.Strong.Tshirt_Web.Entity.Products;
 import com.Strong.Tshirt_Web.Service.ProductService;
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("manage")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -36,7 +36,7 @@ public class ProductController {
             productService.SaveProduct(existingProduct);
         }
 
-        return "redirect:/admin/ShowProducts";
+        return "redirect:/manage/ShowProducts";
     }
 
     // Retrive Data from Pickuped Product ID And Add the Category Id to product by
@@ -55,7 +55,7 @@ public class ProductController {
     @GetMapping("/DeleteProduct")
     public String DeleteProductById(@RequestParam("product_id") int product_id) {
         productService.DeleteProductById(product_id);
-        return "redirect:/ShowProducts";
+        return "redirect:/manage/ShowProducts";
     }
 
     @GetMapping("/ShowProducts")
@@ -72,7 +72,7 @@ public class ProductController {
             product.setCategories(category);
             productService.SaveProduct(product);
         }
-        return "redirect:/admin/ShowProducts";
+        return "redirect:/manage/ShowProducts";
     }
 
     /* Getting All Categories For Adding Product */

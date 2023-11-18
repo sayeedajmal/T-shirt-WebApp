@@ -29,11 +29,15 @@ public class Orders {
     @CreationTimestamp
     private Date order_date;
 
+    @Column(nullable = false)
+    private Float total_amount;
+
     public Orders() {
 
     }
 
-    @OneToMany(mappedBy = "order_id", cascade = CascadeType.ALL) // Use mappedBy to specify the field in ShippingAddresses
+    @OneToMany(mappedBy = "order_id", cascade = CascadeType.ALL) // Use mappedBy to specify the field in
+                                                                 // ShippingAddresses
     private List<ShippingAddresses> shippingAddresses = new ArrayList<>();
 
     public Orders(Users user_id, Date order_date, Float total_amount) {
@@ -41,9 +45,6 @@ public class Orders {
         this.order_date = order_date;
         this.total_amount = total_amount;
     }
-
-    @Column(nullable = false)
-    private Float total_amount;
 
     public Integer getOrder_id() {
         return order_id;

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Shirt | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/Panel.css}" type="text/css" />
+</head>
+
+<body>
+    <h1 style="text-align: center;">T-Shirt Store</h1>
+    <h2 style="text-align: center; margin: 10px;">Login</h2>
+
+    <form class="form" action="/login" method="post">
+        <input type="email" name="email" placeholder="Enter Your Email ID" required><br>
+        <input type="password" name="password" placeholder="Enter Your Password" required><br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+
+</html>

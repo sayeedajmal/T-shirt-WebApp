@@ -21,7 +21,7 @@ import com.Strong.Tshirt_Web.Service.ProductService;
 import com.Strong.Tshirt_Web.Utils.StorageConfig;
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("manage")
 public class ImagesController {
 
     @Autowired
@@ -55,7 +55,7 @@ public class ImagesController {
         if (file.delete()) {
             imagesService.DeleteImageById(image_id);
         }
-        return "redirect:/admin/ShowImages";
+        return "redirect:/manage/ShowImages";
     }
 
     /* POST MAPPING */
@@ -81,7 +81,7 @@ public class ImagesController {
             images.setProduct(product);
             images.setImage_url(FileName);
             imagesService.saveImage(images);
-            return "redirect:/admin/ShowImages";
+            return "redirect:/manage/ShowImages";
         }
     }
 

@@ -19,7 +19,8 @@ th {
     border-collapse: collapse;
     text-align: center;
 }
-td{
+
+td {
     white-space: normal !important;
 }
 
@@ -41,7 +42,7 @@ td{
 }
 
 body {
-    font-size: 2.5vw;
-    font-family: "Jet";
+    font-size: 2.4vw;
+    font-family: "mom";
     background-color: var(--white-red);
 }

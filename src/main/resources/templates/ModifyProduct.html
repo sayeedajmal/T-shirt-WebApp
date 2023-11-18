@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modify Product | Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" th:href="@{/css/AdminPanel.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/Panel.css}" type="text/css" />
 </head>
 
 <body>
 
-    <a th:href="AdminPanel" class="home fa fa-home"></a>
+    <a th:href="Panel" class="home fa fa-home"></a>
     <h2 style="text-align: center; margin: 0;">Modify Product</h2>
 
-    <form class="form" th:action="@{/admin/UpdateProduct}" method="post">
+    <form class="form" th:action="@{/manage/UpdateProduct}" method="post">
         <input type="hidden" name="product_id" readonly th:value="${Product.product_id}" required /><br />
         <label for="product">Category Id</label><br />
         <input type="text" name="category_id" readonly th:value="${Product.categories.category_id}" required /><br />

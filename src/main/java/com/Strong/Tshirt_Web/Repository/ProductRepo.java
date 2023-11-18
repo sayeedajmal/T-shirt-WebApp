@@ -17,6 +17,8 @@ import jakarta.transaction.Transactional;
 @RepositoryRestResource(path = "Products")
 public interface ProductRepo extends JpaRepository<Products, Integer> {
 
+    Products findByName(String name);
+
     /* SELECTING A SPECIFIC PRODUCT WITH IT'S ID AND GETTING IAMGES */
     @Query("SELECT p FROM Products p LEFT JOIN FETCH p.images i WHERE p.product_id = :productId")
     Products findProductWithImages(@Param("productId") Integer productId);

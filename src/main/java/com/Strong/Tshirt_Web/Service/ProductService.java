@@ -10,6 +10,7 @@ import com.Strong.Tshirt_Web.Entity.Products;
 import com.Strong.Tshirt_Web.Repository.CategoryRepo;
 import com.Strong.Tshirt_Web.Repository.ProductRepo;
 import com.Strong.Tshirt_Web.Repository.ProductWithImage;
+import com.Strong.Tshirt_Web.Utils.TShirtException;
 
 @Service
 public class ProductService {
@@ -21,6 +22,10 @@ public class ProductService {
 
     public Products getProductWithImages(Integer productId) {
         return productRepo.findProductWithImages(productId);
+    }
+
+    Products findByName(String name) {
+        return productRepo.findByName(name);
     }
 
     public List<ProductWithImage> getProductWithImage() {
@@ -49,8 +54,12 @@ public class ProductService {
         return categoryRepo.findById(id).orElse(null);
     }
 
-    public void SaveProduct(Products product) {
-        productRepo.save(product);
+    public Products SaveProduct(Products product) {
+        Products findByName = productRepo.findByName(product.getName());
+        if (findByName == null) {
+            return productRepo.save(product);
+        } else
+            throw new TShirtException("Already TShirt Name Defined: " + product.getName(), new Throwable());
     }
 
     public void DeleteProductById(int product_id) {
