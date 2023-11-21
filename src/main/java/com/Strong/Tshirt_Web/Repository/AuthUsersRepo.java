@@ -10,7 +10,7 @@ import com.Strong.Tshirt_Web.Entity.AuthUsers;
 @Repository
 public interface AuthUsersRepo extends JpaRepository<AuthUsers, Integer> {
 
-    AuthUsers findByauthName(String authName);
+    AuthUsers findByName(String name);
 
     List<AuthUsers> findByEmail(String authName);
 }

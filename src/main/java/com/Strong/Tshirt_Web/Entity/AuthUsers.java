@@ -1,6 +1,8 @@
 package com.Strong.Tshirt_Web.Entity;
 
 import java.sql.Date;
+import java.util.List;
+
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
@@ -8,15 +10,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class AuthUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer authority_Id;
+    private Integer id;
 
     @Column(nullable = false, unique = true)
-    private String authName;
+    private String name;
 
     @Column(nullable = false)
     private String email;
@@ -37,13 +42,18 @@ public class AuthUsers {
     @Column(nullable = false)
     private boolean Enabled;
 
+    @ManyToMany
+    @JoinTable(name = "user_Autorities", joinColumns = @JoinColumn(name = "authority_Id"), inverseJoinColumns = @JoinColumn(name = "id"))
+    private List<Authorities> authorities;
+
     public AuthUsers() {
     }
 
-    public AuthUsers(Integer authority_Id, String authName, String email, String phone_Number, String passowrd_hash,
+    public AuthUsers(Integer id, String name, String email, String phone_Number,
+            String passowrd_hash,
             String address, Date regdate, boolean enabled) {
-        this.authority_Id = authority_Id;
-        this.authName = authName;
+        this.id = id;
+        this.name = name;
         this.email = email;
         this.phone_Number = phone_Number;
         this.passowrd_hash = passowrd_hash;
@@ -52,20 +62,20 @@ public class AuthUsers {
         this.Enabled = enabled;
     }
 
-    public Integer getAuthority_Id() {
-        return authority_Id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setAuthority_Id(Integer authority_Id) {
-        this.authority_Id = authority_Id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getAuthName() {
-        return authName;
+    public String getName() {
+        return name;
     }
 
-    public void setAuthName(String authName) {
-        this.authName = authName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

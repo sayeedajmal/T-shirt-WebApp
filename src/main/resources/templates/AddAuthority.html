@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Authority | Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/Panel.css}" type="text/css" />
+</head>
+
+<body>
+    <h2 style="text-align: center; margin: 0;">Add Authority</h2>
+    <form class="form" th:action="@{AddAuthority}" method="post">
+        <label for="authority">Enter Authority Name</label><br />
+        <input type="text" placeholder="Enter authority" name="authority" required /><br />
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

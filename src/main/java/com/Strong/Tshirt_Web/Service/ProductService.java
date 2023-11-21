@@ -59,7 +59,15 @@ public class ProductService {
         if (findByName == null) {
             return productRepo.save(product);
         } else
-            throw new TShirtException("Already TShirt Name Defined: " + product.getName(), new Throwable());
+            throw new TShirtException("Already Product Name Defined: " + product.getName(), new Throwable());
+    }
+
+    public void UpdateProduct(Products existing) {
+        Products findByName = findByName(existing.getName());
+        if (findByName != null && !findByName.getName().isEmpty()) {
+            productRepo.save(existing);
+        } else
+            throw new TShirtException("Product Name Can't Be Empty", new Throwable());
     }
 
     public void DeleteProductById(int product_id) {

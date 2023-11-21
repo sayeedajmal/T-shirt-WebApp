@@ -10,21 +10,21 @@ import com.Strong.Tshirt_Web.Repository.AuthUsersRepo;
 import com.Strong.Tshirt_Web.Utils.TShirtException;
 
 @Service
-public class AuthorityService {
+public class AuthUserService {
 
     @Autowired
     private AuthUsersRepo authorityRepo;
 
-    public AuthUsers SaveAuthority(AuthUsers authority) {
-        AuthUsers findByName = findByName(authority.getAuthName());
+    public AuthUsers SaveAuthUser(AuthUsers authority) {
+        AuthUsers findByName = findByName(authority.getName());
         if (findByName == null) {
             return authorityRepo.save(authority);
         } else
-            throw new TShirtException("Auth Name Already Defined:- "+authority.getAuthName(), new Throwable());
+            throw new TShirtException("Auth Name Already Defined:- " + authority.getName(), new Throwable());
     }
 
     AuthUsers findByName(String UserName) {
-        AuthUsers username = authorityRepo.findByauthName(UserName);
+        AuthUsers username = authorityRepo.findByName(UserName);
         return username;
     }
 

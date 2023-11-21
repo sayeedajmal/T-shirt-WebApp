@@ -31,9 +31,9 @@ public class ProductController {
             existingProduct.setPrice(updatedProduct.getPrice());
             existingProduct.setStock_quentity(updatedProduct.getStock_quentity());
             Categories category = productService.getCategoryById(categoryId);
-            existingProduct.setCategories(category);
 
-            productService.SaveProduct(existingProduct);
+            existingProduct.setCategories(category);
+            productService.UpdateProduct(existingProduct);
         }
 
         return "redirect:/manage/ShowProducts";
@@ -46,10 +46,7 @@ public class ProductController {
         Products product = productService.getProductById(product_id);
         Categories category = productService.getCategoryIdByProductId(product_id);
         product.setCategories(category);
-        if (product.getProduct_id() != null) {
-            return new ModelAndView("ModifyProduct", "Product", product);
-        } else
-            return new ModelAndView("error-404", "", null);
+        return new ModelAndView("ModifyProduct", "Product", product);
     }
 
     @GetMapping("/DeleteProduct")

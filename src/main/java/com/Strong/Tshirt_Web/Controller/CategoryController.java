@@ -43,9 +43,8 @@ public class CategoryController {
         if (existingCategory != null) {
             existingCategory.setName(updatedCategory.getName());
             existingCategory.setDescription(updatedCategory.getDescription());
-            categoryService.SaveCategory(existingCategory);
+            categoryService.UpdateCategory(existingCategory);
         }
-
         return "redirect:/manage/ShowCategories";
     }
 
@@ -53,11 +52,7 @@ public class CategoryController {
     @GetMapping("/ModifyCategory")
     public ModelAndView ModifyCategory(@RequestParam("category_id") int category_id) {
         Categories categoryData = categoryService.getCategoryById(category_id);
-        if (categoryData.getCategory_id() != null) {
-            return new ModelAndView("ModifyCategory", "category_data", categoryData);
-        } else
-            return new ModelAndView("error-404", "", categoryData);
-
+        return new ModelAndView("ModifyCategory", "category_data", categoryData);
     }
 
     // Showing Categories in Show Category

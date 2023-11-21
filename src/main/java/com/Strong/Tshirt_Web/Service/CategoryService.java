@@ -15,12 +15,20 @@ public class CategoryService {
     @Autowired
     CategoryRepo categoryRepo;
 
-    public Categories SaveCategory(Categories category) {
+    public void SaveCategory(Categories category) {
         Categories findByName = findByName(category.getName());
         if (findByName == null) {
-            return categoryRepo.save(category);
+            categoryRepo.save(category);
         } else
             throw new TShirtException("Category Name Already Defined:- " + category.getName(), new Throwable());
+    }
+
+    public void UpdateCategory(Categories existing) {
+        Categories findByName = findByName(existing.getName());
+        if (findByName != null && !findByName.getName().isEmpty()) {
+            categoryRepo.save(existing);
+        } else
+            throw new TShirtException("Category Name Can't Be Empty", new Throwable());
     }
 
     public Categories getCategoryById(int category_id) {

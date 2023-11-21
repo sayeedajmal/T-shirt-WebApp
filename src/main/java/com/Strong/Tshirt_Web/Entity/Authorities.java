@@ -1,10 +1,12 @@
 package com.Strong.Tshirt_Web.Entity;
 
+import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 /**
  * Authorities
@@ -13,37 +15,30 @@ import jakarta.persistence.Id;
 public class Authorities {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int auth_Id;
-
-    @Column(nullable = false)
-    private String auth_Name;
+    private int authority_Id;
 
     @Column(nullable = false)
     private String authority;
 
-    public Authorities(int auth_Id, String auth_Name, String authority) {
-        this.auth_Id = auth_Id;
-        this.auth_Name = auth_Name;
+    @ManyToMany(mappedBy = "authorities")
+    private List<AuthUsers> authUsers;
+
+    public Authorities(int authority_Id, String authority, List<AuthUsers> authUsers) {
+        this.authority_Id = authority_Id;
         this.authority = authority;
+        this.authUsers = authUsers;
     }
 
+    
     public Authorities() {
     }
 
-    public int getAuth_Id() {
-        return auth_Id;
+    public int getAuthority_Id() {
+        return authority_Id;
     }
 
-    public void setAuth_Id(int auth_Id) {
-        this.auth_Id = auth_Id;
-    }
-
-    public String getAuth_Name() {
-        return auth_Name;
-    }
-
-    public void setAuth_Name(String auth_Name) {
-        this.auth_Name = auth_Name;
+    public void setAuthority_Id(int authority_Id) {
+        this.authority_Id = authority_Id;
     }
 
     public String getAuthority() {
@@ -52,6 +47,14 @@ public class Authorities {
 
     public void setAuthority(String authority) {
         this.authority = authority;
+    }
+
+    public void setAuthUsers(List<AuthUsers> authUsers) {
+        this.authUsers = authUsers;
+    }
+
+    public List<AuthUsers> getAuthUsers() {
+        return authUsers;
     }
 
 }

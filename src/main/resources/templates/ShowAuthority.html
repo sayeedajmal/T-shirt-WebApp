@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authority | T-Shirt Store</title>
+    <title>Authority | Manager</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" th:href="@{/css/ShowData.css}" type="text/css" />
 
@@ -12,7 +12,7 @@
 
 <body>
     <h1 style="text-align: center;">Authority</h1>
-    <a href="AddProduct" class="fa fa-pencil-square-o link"></a>
+    <a href="AddAuthority" class="fa fa-pencil-square-o link"></a>
     <table>
         <tr>
             <th>Id</th>
@@ -21,19 +21,20 @@
             <th>Number</th>
             <th>Address</th>
             <th>BDate</th>
-            <th>Enabled</th>
+            <th>Active</th>
+            <th>Remove User</th>
+            <th>Authorities</th>
         </tr>
         <tr th:each="A :${AllAuthority}">
-            <td th:text="${A.authority_Id}"></td>
-            <td th:text="${A.authName}"></td>
+            <td th:text="${A.id}"></td>
+            <td th:text="${A.name}"></td>
             <td th:text="${A.email}"></td>
             <td th:text="${A.phone_Number}"></td>
             <td th:text="${A.address}"></td>
             <td th:text="${A.regdate}"></td>
             <td th:text="${A.Enabled}"></td>
-            <td><a th:href="'/admin/DeleteAuthority?authority_Id=' + ${A.authority_Id}" class="fa fa-remove"></a> <a
-                    th:href="'/admin/ModifyAuthority?authority_Id=' + ${A.authority_Id}"
-                    class="fa fa-pencil-square"></a>
+            <td><a th:href="'/admin/DeleteAuthority?id=' + ${A.id}" class="fa fa-remove"></a>
+                <!--     <a th:href="'/admin/ModifyAuthority?id=' + ${A.id}" class="fa fa-pencil-square"></a> -->
             </td>
         </tr>
     </table>

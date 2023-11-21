@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,7 +18,7 @@ import com.Strong.Tshirt_Web.Entity.Images;
 import com.Strong.Tshirt_Web.Entity.OrderItems;
 import com.Strong.Tshirt_Web.Entity.Products;
 import com.Strong.Tshirt_Web.Repository.ProductWithImage;
-import com.Strong.Tshirt_Web.Service.AuthorityService;
+import com.Strong.Tshirt_Web.Service.AuthUserService;
 import com.Strong.Tshirt_Web.Service.ProductService;
 import com.Strong.Tshirt_Web.Utils.TShirtException;
 
@@ -27,7 +28,10 @@ public class FrontViewController {
     private ProductService productService;
 
     @Autowired
-    private AuthorityService authorityService;
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthUserService AuthUserService;
 
     /* ADMINPANEL Panel */
     @GetMapping("/AdminPanel")
@@ -90,14 +94,16 @@ public class FrontViewController {
     }
 
     /* AUTHORITY MANAGEMENT */
-    @GetMapping("/Authority")
+    @GetMapping("/AddAuthUser")
     public String Authority() {
-        return "Authority";
+        return "AddAuthUser";
     }
 
-    @PostMapping("/AddAuthority")
-    public String AddAuthority(@ModelAttribute AuthUsers authority) throws TShirtException {
-        authorityService.SaveAuthority(authority);
+    @PostMapping("/AddAuthUser")
+    public String AddAuthUser(@ModelAttribute AuthUsers authority) throws TShirtException {
+        String pass_hash = passwordEncoder.encode(authority.getPassowrd_hash());
+        authority.setPassowrd_hash(pass_hash);
+        AuthUserService.SaveAuthUser(authority);
         return "redirect:/AdminPanel";
     }
 }
