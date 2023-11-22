@@ -1,3 +1,41 @@
+:root {
+    --white-Color: white;
+    --black-Color: black;
+    --white-red: #dae9dcc5;
+    --full-width: 99vw;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 166, 0, 0.603);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    direction: ltr;
+}
+
+::-webkit-scrollbar-track {
+    background: #00000000;
+}
+
+@font-face {
+    font-family: "Jet";
+    src: url("/fonts/JetMono.ttf");
+}
+
+@font-face {
+    font-family: "mom";
+    src: url("/fonts/momR.ttf");
+}
+
+body {
+    font-family: "mom";
+    background-color: var(--white-red);
+    margin: 0;
+    padding: 0 0 0 5px;
+}
+
 .link {
     float: right;
     margin-right: 30px;

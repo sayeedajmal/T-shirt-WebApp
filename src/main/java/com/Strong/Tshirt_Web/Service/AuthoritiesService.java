@@ -1,5 +1,7 @@
 package com.Strong.Tshirt_Web.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,10 @@ public class AuthoritiesService {
 
     @Autowired
     private AuthoritiesRepo authoritiesRepo;
+
+    public List<Authorities> findAllAuthority() {
+        return authoritiesRepo.findAll();
+    }
 
     public Authorities SaveAuthority(Authorities authority) {
         Authorities findByName = findByAuthority(authority.getAuthority());

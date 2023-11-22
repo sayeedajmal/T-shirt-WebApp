@@ -40,4 +40,10 @@ public class AuthorityController {
         authoritiesService.SaveAuthority(authority);
         return "redirect:/admin/ShowAuthority";
     }
+
+    @GetMapping("/GiveAuthority")
+    public ModelAndView GiveAuthority() {
+        List<Authorities> authorities = authoritiesService.findAllAuthority();
+        return new ModelAndView("GiveAuthority", "AllAuthorities", authorities);
+    }
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Give Authority | Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/Panel.css}" type="text/css" />
+</head>
+
+<body>
+    <h2 style="text-align: center; margin: 0;">Add Authority</h2>
+    <form class="form" th:action="@{AddAuthority}" method="post">
+        <label style="font-weight: bolder; color: orange; text-transform: uppercase;">Hello</label>
+        <div class="checkContainer" th:each="A: ${AllAuthorities}">
+            <input type="checkbox" th:value="${A.authority}" th:text="${A.authority}" />
+        </div>
+        <button type="reset">reset</button>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+<style>
+    .form {
+        width: max-content;
+        padding-left: 10px;
+        text-align: left;
+    }
+
+    .checkContainer {
+        flex-wrap: wrap;
+        background-color: white;
+        padding: 10px;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+
+    input[type="checkbox"] {
+        content: "";
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 20px;
+        margin-right: 10px;
+        height: 20px;
+    }
+</style>
+
+</html>
