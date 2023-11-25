@@ -1,10 +1,7 @@
 package com.Strong.Tshirt_Web.Controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,18 +50,22 @@ public class AuthorityController {
         List<Authorities> authorities = authoritiesService.findAllAuthority();
         AuthUsers user = authUserService.findById(id);
         AuthorityForm authorityForm = new AuthorityForm();
-        /* Here we have to get the list of authorities from getting the AuthUserId */
+        /*
+         * Here we have to get the list of authorities from getting the AuthUserId ..
+         * Fetch one by one and add into a list and then add it to AthorityForm that's
+         * contain exsitingAuthorities
+         */
         List<Authorities> authority_Id = user.getAuthorities();
         List<String> existing = new ArrayList<>();
         for (Authorities existingAuthoritesID : authority_Id) {
             existing.add(existingAuthoritesID.getAuthority());
         }
         authorityForm.setAuthorities(authorities);
+        authorityForm.setSelectedAuthorities(existing);
         model.addAttribute("name", name);
         model.addAttribute("attributes", authorities);
         model.addAttribute("id", id);
         model.addAttribute("authorityForm", authorityForm);
-        model.addAttribute("exist", existing);
 
         return new ModelAndView("GiveAuthority", "model", authorities);
 

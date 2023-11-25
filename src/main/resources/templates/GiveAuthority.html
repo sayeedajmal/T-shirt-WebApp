@@ -21,27 +21,14 @@
             created a filed named selectedAuthorities that's used to get the data in authoritForm class -->
             <input type="checkbox" th:value="${A.authority}" th:text="${A.authority}"
                 th:field="*{selectedAuthorities}" />
+            <!-- Here' the th:field contain the selectedAuthrorites that's cheked if have the autority which matches string -->
         </div>
-        <text style="border: 2px solid white; color: orange;">Existing Authority:</text>
-        <text th:each="E:${exist}" th:text="${E}"></text>
         <button type="reset">reset</button>
         <button type="submit">Submit</button>
     </form>
 
 </body>
 <style>
-    text {
-        background-color: white;
-        border: 2px solid rgba(255, 166, 0, 0.371);
-        border-radius: 30px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: fit-content;
-        font-size: 30px !important;
-        padding: 0px 10px 0 10px;
-    }
-
     .form {
         width: max-content;
         padding-left: 10px;
