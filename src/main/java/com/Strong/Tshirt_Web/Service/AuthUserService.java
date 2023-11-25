@@ -23,6 +23,16 @@ public class AuthUserService {
             throw new TShirtException("Auth Name Already Defined:- " + authority.getName(), new Throwable());
     }
 
+    public AuthUsers updateAuthUserAuthorities(AuthUsers user) {
+        AuthUsers existingUser = findByName(user.getName());
+        if (existingUser != null) {
+            existingUser.setAuthorities(user.getAuthorities());
+            return authorityRepo.save(existingUser);
+        } else {
+            throw new TShirtException("User not found with name: " + user.getName(), new Throwable());
+        }
+    }
+
     AuthUsers findByName(String UserName) {
         AuthUsers username = authorityRepo.findByName(UserName);
         return username;
@@ -30,5 +40,9 @@ public class AuthUserService {
 
     public List<AuthUsers> findAll() {
         return authorityRepo.findAll();
+    }
+
+    public AuthUsers findById(Integer id) {
+        return authorityRepo.findById(id).orElse(null);
     }
 }

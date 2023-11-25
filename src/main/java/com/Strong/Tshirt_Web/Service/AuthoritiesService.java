@@ -19,6 +19,10 @@ public class AuthoritiesService {
         return authoritiesRepo.findAll();
     }
 
+    public Authorities findById(Integer authority_Id) {
+        return authoritiesRepo.findById(authority_Id).orElse(null);
+    }
+
     public Authorities SaveAuthority(Authorities authority) {
         Authorities findByName = findByAuthority(authority.getAuthority());
         String Capital = authority.getAuthority().toUpperCase();

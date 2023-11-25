@@ -43,7 +43,7 @@ public class AuthUsers {
     private boolean Enabled;
 
     @ManyToMany
-    @JoinTable(name = "user_Autorities", joinColumns = @JoinColumn(name = "authority_Id"), inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "user_Authorities", joinColumns = @JoinColumn(name = "authority_Id"), inverseJoinColumns = @JoinColumn(name = "id"))
     private List<Authorities> authorities;
 
     public AuthUsers() {
@@ -124,6 +124,14 @@ public class AuthUsers {
 
     public void setEnabled(boolean enabled) {
         Enabled = enabled;
+    }
+
+    public List<Authorities> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<Authorities> authorities) {
+        this.authorities = authorities;
     }
 
 }

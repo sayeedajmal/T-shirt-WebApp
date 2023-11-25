@@ -11,16 +11,37 @@
 
 <body>
     <h2 style="text-align: center; margin: 0;">Add Authority</h2>
-    <form class="form" th:action="@{AddAuthority}" method="post">
-        <label style="font-weight: bolder; color: orange; text-transform: uppercase;">Hello</label>
-        <div class="checkContainer" th:each="A: ${AllAuthorities}">
-            <input type="checkbox" th:value="${A.authority}" th:text="${A.authority}" />
+    <form class="form" th:action="@{GiveAuthority}" method="post" th:object="${authorityForm}">
+        <input type="hidden" th:name="id" th:value="${id}" />
+        <label style="font-weight: bolder; color: orange; text-transform: uppercase; margin-right: 1rem;"
+            th:text="'Name: '+${name}"></label>
+        <label style="font-weight: bolder; color: orange; text-transform: uppercase;" th:text="'ID: '+${id}"></label>
+
+        <div class="checkContainer" th:each="A: ${attributes}"> <!-- Here we post object ${authoritForm} and in input we
+            created a filed named selectedAuthorities that's used to get the data in authoritForm class -->
+            <input type="checkbox" th:value="${A.authority}" th:text="${A.authority}"
+                th:field="*{selectedAuthorities}" />
         </div>
+        <text style="border: 2px solid white; color: orange;">Existing Authority:</text>
+        <text th:each="E:${exist}" th:text="${E}"></text>
         <button type="reset">reset</button>
         <button type="submit">Submit</button>
     </form>
+
 </body>
 <style>
+    text {
+        background-color: white;
+        border: 2px solid rgba(255, 166, 0, 0.371);
+        border-radius: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        font-size: 30px !important;
+        padding: 0px 10px 0 10px;
+    }
+
     .form {
         width: max-content;
         padding-left: 10px;

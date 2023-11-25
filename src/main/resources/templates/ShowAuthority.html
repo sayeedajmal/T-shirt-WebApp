@@ -33,8 +33,9 @@
             <td th:text="${A.address}"></td>
             <td th:text="${A.regdate}"></td>
             <td th:text="${A.Enabled}"></td>
-            <td><a th:href="'/admin/DeleteAuthority?id=' + ${A.id}" class="fa fa-remove"></a></td>
-            <td><a th:href="'/admin/GiveAuthority?id=' + ${A.id}" class="fa fa-pencil"></a></td>
+            <td><a th:href="'/admin/DeleteAuthority?id=' + ${A.id}" class="fa fa-remove"></a>
+            </td>
+            <td><a th:href="'/admin/GiveAuthority?id=' + ${A.id} + '&name=' + ${A.name}" class="fa fa-pencil"></a></td>
         </tr>
     </table>
 </body>
