@@ -57,11 +57,13 @@ public class AuthorityController {
          */
         List<Authorities> authority_Id = user.getAuthorities();
         List<String> existing = new ArrayList<>();
+
         for (Authorities existingAuthoritesID : authority_Id) {
             existing.add(existingAuthoritesID.getAuthority());
         }
         authorityForm.setAuthorities(authorities);
         authorityForm.setSelectedAuthorities(existing);
+        
         model.addAttribute("name", name);
         model.addAttribute("attributes", authorities);
         model.addAttribute("id", id);

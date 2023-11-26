@@ -26,8 +26,12 @@ public class SecurityConfig implements AuthenticationFailureHandler {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        /*
+         * THIS IS USED FOR CORS ATTACK BASICALLY CONNECT TO ANOTHER APPLICATIONS LIKE
+         * WEB IF THIS IS HOSTED IN ANOTHER ADDRESS AND SOMEONE HAVE TO CATCH THE
+         * ENDPOINTS ..
+         */
         http.cors().configurationSource(new CorsConfigurationSource() {
-
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration config = new CorsConfiguration();
@@ -41,8 +45,10 @@ public class SecurityConfig implements AuthenticationFailureHandler {
 
         }).and().csrf().disable().authorizeHttpRequests(t -> {
             try {
-                t.requestMatchers(HttpMethod.GET, "/manage/**", "/admin/**")
-                        .authenticated()
+                t.requestMatchers(HttpMethod.GET, "/admin/**")
+                        .hasAnyAuthority("ADMIN")
+                        .requestMatchers("/manage/**")
+                        .hasAnyAuthority("MANAGE", "ADMIN")
                         .anyRequest().permitAll()
                         .and().formLogin()
                         .and().httpBasic();
@@ -54,37 +60,6 @@ public class SecurityConfig implements AuthenticationFailureHandler {
 
         return http.build();
     }
-
-    /*
-     * @Bean
-     * public UserDetailsService userDetailsService() {
-     * PasswordEncoder passwordEncoder =
-     * PasswordEncoderFactories.createDelegatingPasswordEncoder();
-     * UserDetails user = User.builder()
-     * .username("user")
-     * .password(passwordEncoder.encode("user"))
-     * .roles("USER")
-     * .build();
-     * 
-     * UserDetails manage = User.builder()
-     * .username("manage")
-     * .password(passwordEncoder.encode("manage"))
-     * .roles("MANAGE")
-     * .build();
-     * UserDetails admin = User.builder()
-     * .username("admin")
-     * .password(passwordEncoder.encode("admin"))
-     * .roles("ADMIN")
-     * .build();
-     * 
-     * return new InMemoryUserDetailsManager(user, manage, admin);
-     * }
-     *
-     * @Bean
-     * public UserDetailsService jdbcDetails(DataSource datasource) {
-     * return new JdbcUserDetailsManager(datasource);
-     * }
-     */
 
     @Bean
     public PasswordEncoder passwordEncoder() {

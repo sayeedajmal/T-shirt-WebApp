@@ -2,6 +2,7 @@ package com.Strong.Tshirt_Web.Security;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.Strong.Tshirt_Web.Entity.AuthUsers;
+import com.Strong.Tshirt_Web.Entity.Authorities;
 import com.Strong.Tshirt_Web.Repository.AuthUsersRepo;
 
 @Service
@@ -24,23 +26,38 @@ public class TshirtAuthenProvider implements AuthenticationProvider {
     private AuthUsersRepo authUsersRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    private List<GrantedAuthority> authoritiesForUser;
 
+    /*
+     * HERE WE HAVE TO CREATE AN METHOD FOR AUTHENTICATION BY POSTING Email Id. and
+     * getting the match with the authUser Repository and match the password with
+     * encrypt and decrypt the password of both side and match. and aprove
+     */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String username = authentication.getName();
+        String email = authentication.getName();
         String password = authentication.getCredentials().toString();
-        List<AuthUsers> authusers = authUsersRepo.findByEmail(username);
+        List<AuthUsers> authusers = authUsersRepo.findByEmail(email);
+        AuthUsers user = authUsersRepo.findByName(authusers.get(0).getName());
         if (authusers.size() > 0) {
             if (passwordEncoder.matches(password, authusers.get(0).getPassowrd_hash())) {
-                List<GrantedAuthority> authorities = new ArrayList<>();
-                authorities.add(new SimpleGrantedAuthority("ADMIN"));
-                return new UsernamePasswordAuthenticationToken(username, password, authorities);
+                authoritiesForUser = getAuthoritiesForUser(user);
+                System.out.println("<<<<<<<<<<<<<<<<<<<< " + email + passwordEncoder.encode(password)
+                        + authoritiesForUser.get(0).getAuthority());
+                return new UsernamePasswordAuthenticationToken(email, password, authoritiesForUser);
             } else {
                 throw new BadCredentialsException("Invalid Password");
             }
         } else {
             throw new BadCredentialsException("No User Registered With this Credentials");
         }
+    }
+
+    public List<GrantedAuthority> getAuthoritiesForUser(AuthUsers user) {
+        List<Authorities> userAuthorities = user.getAuthorities();
+        return userAuthorities.stream()
+                .map(authority -> new SimpleGrantedAuthority(authority.getAuthority()))
+                .collect(Collectors.toList());
     }
 
     @Override
