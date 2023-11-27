@@ -1,27 +1,21 @@
 package com.Strong.Tshirt_Web.Security;
 
-import java.io.IOException;
 import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
-public class SecurityConfig implements AuthenticationFailureHandler {
+public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -50,6 +44,8 @@ public class SecurityConfig implements AuthenticationFailureHandler {
                         .requestMatchers("/manage/**")
                         .hasAnyAuthority("MANAGE", "ADMIN")
                         .anyRequest().permitAll()
+                        .and().exceptionHandling()
+                        .accessDeniedPage("/access-denied")
                         .and().formLogin()
                         .and().httpBasic();
             } catch (Exception e) {
@@ -64,22 +60,5 @@ public class SecurityConfig implements AuthenticationFailureHandler {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-            AuthenticationException exception) throws IOException, ServletException {
-        if (exception instanceof AuthenticationException) {
-            response.sendRedirect("/login");
-        } else {
-            // Handle other authentication failures
-            response.sendRedirect("/login?error");
-        }
-
-        /*
-         * <div th:if="${param.error != null}">
-         * <p style="color: red;">Incorrect credentials. Please try again.</p>
-         * </div>
-         */
     }
 }

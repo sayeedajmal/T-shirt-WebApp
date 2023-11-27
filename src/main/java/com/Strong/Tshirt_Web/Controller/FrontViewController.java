@@ -106,4 +106,9 @@ public class FrontViewController {
         AuthUserService.SaveAuthUser(authority);
         return "redirect:/AdminPanel";
     }
+
+    @GetMapping("access-denied")
+    public String accessdenied() {
+        return "access-denied";
+    }
 }

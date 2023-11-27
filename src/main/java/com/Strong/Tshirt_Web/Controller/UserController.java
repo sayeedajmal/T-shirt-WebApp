@@ -13,11 +13,6 @@ public class UserController {
     @Autowired
     private UerService userService;
 
-    @GetMapping("/login")
-    public String Login() {
-        return "Login";
-    }
-
     @GetMapping("/UserLogin")
     public String UserLogin() {
         return "UserLogin";
@@ -32,5 +27,15 @@ public class UserController {
     public String AddUsers(@ModelAttribute Users user) {
         userService.AddUser(user);
         return "redirect:/AllUsers";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "redirect:/login?logout";
     }
 }

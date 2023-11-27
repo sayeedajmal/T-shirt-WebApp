@@ -6,14 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Panel | TShirt Store</title>
   <link rel="stylesheet" th:href="@{/css/Panel.css}" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
   <h3 style="text-align: center;">Welcome Admin</h3>
-  <a class="link" href="/AddAuthUser">Add Authorities</a><!-- AuthoController -->
-  <a class="link" href="/admin/ShowAuthority">Show Authorities</a><!-- AuthoController -->
-  <a class="link" href="/admin/ShowOrders">Show Orders</a>
-  <a class="link" href="/admin/PaymentTransactions">Payment Transactions</a>
+  <a href="logout" class="fa fa-sign-out logout"></a>
+  <div class="container">
+    <a class="link" href="/AddAuthUser">Add Authorities</a><!-- AuthoController -->
+    <a class="link" href="/admin/ShowAuthority">Show Authorities</a><!-- AuthoController -->
+    <a class="link" href="/admin/ShowOrders">Show Orders</a>
+    <a class="link" href="/admin/PaymentTransactions">Payment Transactions</a>
+  </div>
 </body>
+<style>
+  .logout {
+    margin-top: -3rem;
+    float: right;
+    margin-right: 30px;
+    color: orange;
+    text-decoration: none;
+  }
+</style>
 
 </html>

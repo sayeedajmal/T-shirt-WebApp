@@ -1,6 +1,5 @@
 package com.Strong.Tshirt_Web.Security;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,12 +38,13 @@ public class TshirtAuthenProvider implements AuthenticationProvider {
         String email = authentication.getName();
         String password = authentication.getCredentials().toString();
         List<AuthUsers> authusers = authUsersRepo.findByEmail(email);
+        if (authusers.size() <= 0) {
+            throw new UsernameNotFoundException("Invalid User");
+        }
         AuthUsers user = authUsersRepo.findByName(authusers.get(0).getName());
         if (authusers.size() > 0) {
             if (passwordEncoder.matches(password, authusers.get(0).getPassowrd_hash())) {
                 authoritiesForUser = getAuthoritiesForUser(user);
-                System.out.println("<<<<<<<<<<<<<<<<<<<< " + email + passwordEncoder.encode(password)
-                        + authoritiesForUser.get(0).getAuthority());
                 return new UsernamePasswordAuthenticationToken(email, password, authoritiesForUser);
             } else {
                 throw new BadCredentialsException("Invalid Password");
